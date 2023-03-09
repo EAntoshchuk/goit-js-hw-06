@@ -5,10 +5,11 @@ console.log(dataLength);
 
 inputEL.addEventListener(`blur`, (event) => {
   console.log(event.target.value.length);
-  if (event.target.value.length === dataLength) {
-    return inputEL.setAttribute("id", "#validation-input.valid");
-  } else if (event.target.value.length === "") {
-    return inputEL.setAttribute("id", "#validation-input");
+  if (event.target.value.length == dataLength) {
+    inputEL.classList.add("valid");
+    inputEL.classList.remove("invalid");
+  } else {
+    inputEL.classList.add("invalid");
+    inputEL.classList.remove("valid");
   }
-  return inputEL.setAttribute("id", "#validation-input.invalid");
 });
