@@ -4,32 +4,40 @@ function getRandomHexColor() {
     .padStart(6, 0)}`;
 }
 
-const createBtnEL = document.querySelector(`button[data-create]`);
-const destroyBtnEL = document.querySelector(`button[data-destroy]`);
-const divBoxesEl = document.querySelector(`#boxes`);
-const divControslEl = document.querySelector(`#controls`);
+const createBtnEL = document.querySelector("button[data-create]");
+const destroyBtnEL = document.querySelector("button[data-destroy]");
+const divControlsEl = document.querySelector("#controls");
+const divBoxesEl = document.querySelector("#boxes");
 
-createBtnEL.addEventListener(`click`, createBoxes);
-destroyBtnEL.addEventListener(`click`, destroyBoxes);
+createBtnEL.addEventListener("click", createBoxes);
+destroyBtnEL.addEventListener("click", destroyBoxes);
 
 function createBoxes() {
-  const qauntity = divControslEl.firstElementChild.value;
+  const amount = divControlsEl.firstElementChild.value;
   const squares = [];
 
-  let basicHeight = `30`;
-  let basicWidth = `30`;
+  let defaultHeight = 30;
+  let defaultWidth = 30;
 
-  for (let i = 0; i < qauntity; i += 1) {
-    const square = document.createElement(`div`);
-    square.style.height = `${basicHeight}px`;
-    square.style.width = `${basicWidth}px`;
-    basicHeight += 10;
-    basicWidth += 10;
-    square.style.backgroundColor = `${getRandomHexColor}`;
+  for (let i = 0; i < amount; i += 1) {
+    divBoxesEl.style.display = "flex";
+    divBoxesEl.style.flexWrap = "wrap";
+    divBoxesEl.style.gap = "20px";
+    const square = document.createElement("div");
+    square.style.height = `${defaultHeight}px`;
+    square.style.width = `${defaultWidth}px`;
+    defaultHeight += 10;
+    defaultWidth += 10;
+    square.style.background = getRandomHexColor();
     squares.push(square);
   }
+
   divBoxesEl.append(...squares);
   console.log(divBoxesEl);
+}
+
+function destroyBoxes() {
+  divBoxesEl.innerHTML = "";
 }
 
 console.log(divBoxesEl);

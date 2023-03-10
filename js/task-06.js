@@ -8,6 +8,9 @@ inputEL.addEventListener(`blur`, (event) => {
   if (event.target.value.length == dataLength) {
     inputEL.classList.add("valid");
     inputEL.classList.remove("invalid");
+  } else if (event.target.value === "") {
+    inputEL.classList.remove("valid");
+    inputEL.classList.remove("invalid");
   } else {
     inputEL.classList.add("invalid");
     inputEL.classList.remove("valid");
