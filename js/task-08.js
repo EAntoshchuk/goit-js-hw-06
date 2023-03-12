@@ -10,13 +10,13 @@ function handleSubmitForm(event) {
   if (emailInputEL.value === "") {
     alert(`❗All fields must be filled❗`);
     emailInputEL.focus();
-    emailInputEL.style.boxShadow = "1px 3px 7px red";
+    emailShadow();
     return;
   } else if (passwordInputEL.value === "") {
     alert(`❗All fields must be filled❗`);
     emailInputEL.style.boxShadow = "none";
     passwordInputEL.focus();
-    passwordInputEL.style.boxShadow = "1px 3px 7px red";
+    passwordShadow();
     return;
   }
 
@@ -31,6 +31,14 @@ function handleSubmitForm(event) {
     emailLoginEL: emailInputEL.value,
     passwordLoginEL: passwordInputEL.value,
   };
+
+  function emailShadow() {
+    emailInputEL.style.boxShadow = "1px 3px 7px red";
+  }
+
+  function passwordShadow() {
+    passwordInputEL.style.boxShadow = "1px 3px 7px red";
+  }
 
   console.log(inputData);
   event.currentTarget.reset();
